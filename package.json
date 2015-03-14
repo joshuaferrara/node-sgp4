@@ -1,13 +1,13 @@
 {
   "name": "sgp4",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A NodeJS port of python-sgp4",
   "main": "sgp4.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git", 
+    "type": "git",
     "url": "https://github.com/joshuaferrara/node-sgp4.git"
   },
   "keywords": [
