@@ -1,0 +1,33 @@
+{
+  "name": "sgp4",
+  "version": "1.0.0",
+  "description": "A NodeJS port of python-sgp4",
+  "main": "sgp4.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joshuaferrara/node-sgp4.git"
+  },
+  "keywords": [
+    "sgp4",
+    "node-sgp4",
+    "satellite",
+    "tle",
+    "norad",
+    "wgs84",
+    "wgs72"
+  ],
+  "author": "Joshua Ferrara",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/joshuaferrara/node-sgp4/blob/master/LICENSE"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/joshuaferrara/node-sgp4/issues"
+  },
+  "homepage": "https://github.com/joshuaferrara/node-sgp4"
+}
