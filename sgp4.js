@@ -1508,7 +1508,8 @@ var SGP4 = {
         var m = (j - satrec.jdsatepoch) * 1440;
         return SGP4.sgp4(satrec, m);
     },
-    //All functions below are taken from satellite-js found at (https://github.com/shashwatak/satellite-js), created by Shashwat Kandadai and released under the MIT license.
+    // All functions below are taken from satellite-js found at (https://github.com/shashwatak/satellite-js), created by Shashwat Kandadai and released under the MIT license.
+    // Some modifications have been made to the original code.
     /*
      * satellite-js v1.1
      * (c) 2013 Shashwat Kandadai and UCSC
@@ -1536,7 +1537,10 @@ var SGP4 = {
             k += 1;
         }
         var height = (R/Math.cos(latitude)) - (a*C);
-        return { longitude : longitude, latitude : latitude, height : height };
+        
+        var velocity = Math.sqrt(398600.8 / (height + 6378.135)); // Velocity in kilemeters per second. Multiply by 3600 for kilometers per hour.
+        
+        return { longitude : longitude, latitude : latitude, height : height, velocity : velocity };
     },
     eciToEcf: function(eci_coords, gmst){
         'use strict';

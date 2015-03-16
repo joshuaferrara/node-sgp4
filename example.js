@@ -31,6 +31,9 @@ function printPosition() {
     //Prints latitude of longitude of ISS
     console.log(latitude + ' ' + longitude);
     
+    //Prints current speed of satellite in km/s
+    console.log(geodeticCoordinates.velocity + ' km/s');
+    
     // Call printPosition in 750 ms
     setTimeout(printPosition, 750);
 }
