@@ -1,4 +1,6 @@
 # node-sgp4
+
+[![Join the chat at https://gitter.im/joshuaferrara/node-sgp4](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/joshuaferrara/node-sgp4?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 SGP4 is one of five simplified pertubation models used to calculate various orbital information about satellites. This library was ported from python-sgp4 and uses some functions from satellite-js to convert coordinates.
 
 
