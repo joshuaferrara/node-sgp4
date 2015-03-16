@@ -28,11 +28,15 @@ function printPosition() {
     var longitude = SGP4.degreesLong(geodeticCoordinates.longitude);
     var latitude = SGP4.degreesLat(geodeticCoordinates.latitude);
     
-    //Prints latitude of longitude of ISS
-    console.log(latitude + ' ' + longitude);
+    // Prints latitude of longitude of ISS
+    console.log('Lat/Long: ' + latitude + ' ' + longitude);
     
-    //Prints current speed of satellite in km/s
-    console.log(geodeticCoordinates.velocity + ' km/s');
+    // Prints current speed of satellite in km/s
+    console.log('Velocity: ' + geodeticCoordinates.velocity + ' km/s');
+    
+    // Prints orbital period of satellite in minutes
+    // 2pi * sqrt(Relative Height / Gravity of Earth * Mass of Earth)
+    console.log('Oribital Period: ' + ((2 * Math.PI) * (geodeticCoordinates.height + 6378.135)) * (Math.sqrt((geodeticCoordinates.height + 6378.135)/398600.8)) / 60);
     
     // Call printPosition in 750 ms
     setTimeout(printPosition, 750);
