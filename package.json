@@ -1,6 +1,6 @@
 {
   "name": "sgp4",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A NodeJS port of python-sgp4 used for predicting and calculating orbital information of satellites from TLE data.",
   "main": "sgp4.js",
   "scripts": {

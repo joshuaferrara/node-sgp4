@@ -1390,7 +1390,7 @@ var SGP4 = {
         satrec.ndot = parseFloat(line1.substring(33, 43));
         satrec.nddot = parseFloat("." + parseInt(line1.substring(44, 50), 10) + "E" + line1.substring(50, 52));
         satrec.bstar = parseFloat(line1.substring(53, 53) + '.' + line1.substring(54, 59)); //parseFloat("." + parseInt(line1.substring(53, 59), 10) + "E" + line1.substring(59, 61));
-        var ibexp = parseInt(line1.substring(59, 61));
+        var ibexp = parseInt(line1.substring(59, 61), 10);
         satrec.bstar = satrec.bstar * Math.pow(10, ibexp);
         
         //Line 2
