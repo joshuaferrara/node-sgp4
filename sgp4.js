@@ -2,7 +2,7 @@ var SGP4 = {
     deg2rad: Math.PI / 180.0,
     twopi: 2.0 * Math.PI,
     fmod: function (x, y) {
-      return x - Math.floor(x/y) * y
+      return x - Math.floor(x/y) * y;
     },
     dpper: function(satrec, inclo, init, ep, inclp, nodep, argpp, mp, opsmode) {
         'use strict';
@@ -48,8 +48,9 @@ var SGP4 = {
         
         var zm = zmos + zns * t;
         
-        if (init == 'y')
+        if (init === 'y') {
             zm = zmos;
+        }
             
         var zf = zm + 2.0 * zes * Math.sin(zm);
         var sinzf = Math.sin(zf);
@@ -61,8 +62,9 @@ var SGP4 = {
         var sghs  = sgh2 * f2 + sgh3 * f3 + sgh4 * sinzf;
         var shs   = sh2 * f2 + sh3 * f3;
         zm    = zmol + znl * t;
-        if (init == 'y')
+        if (init === 'y') {
             zm = zmol;
+        }
         zf    = zm + 2.0 * zel * Math.sin(zm);
         sinzf = Math.sin(zf);
         f2    =  0.5 * sinzf * sinzf - 0.25;
@@ -78,7 +80,7 @@ var SGP4 = {
         var pgh   = sghs + sghl;
         var ph    = shs + shll;
         
-        if (init == 'n') {
+        if (init === 'n') {
             pe = pe - peo;
             pinc  = pinc - pinco;
             pl    = pl - plo;
@@ -105,13 +107,15 @@ var SGP4 = {
                 alfdp = alfdp + dalf;
                 betdp = betdp + dbet;
                 nodep = SGP4.fmod(nodep, SGP4.twopi);
-                if (nodep < 0.0 && opsmode == 'a')
+                if (nodep < 0.0 && opsmode === 'a') {
                     nodep = nodep + SGP4.twopi;
+                }
                 var xls = mp + argpp + pl + pgh + (cosip - pinc * sinip) * nodep;
                 var xnoh = nodep;
                 nodep = Math.atan2(alfdp, betdp);
-                if (nodep < 0.0 && opsmode == 'a')
+                if (nodep < 0.0 && opsmode === 'a') {
                     nodep = nodep + SGP4.twopi;
+                }
                 if (Math.abs(xnoh - nodep) > Math.PI) {
                     if (nodep < xnoh) {
                         nodep = nodep + SGP4.twopi;
@@ -232,7 +236,7 @@ var SGP4 = {
             s6  = x2 * x3 + x1 * x4;
             s7  = x2 * x4 - x1 * x3;
             
-            if (lsflg == 1) {
+            if (lsflg === 1) {
                 ss1   = s1;
                 ss2   = s2;
                 ss3   = s3;
@@ -372,7 +376,7 @@ var SGP4 = {
             z33: z33,
             zmol: zmol,
             zmos: zmos
-        }
+        };
     },
     dsinit: function(whichconst, cosim, emsq, argpo, s1, s2, s3, s4, s5, sinim, ss1, ss2, ss3, ss4, ss5, sz1, sz3, sz11, sz13, sz21, sz23, sz31, sz33, t, tc, gsto, mo, mdot, no, nodeo, nodedot, xpidot, z1, z3, z11, z13, z21, z23, z31, z33, ecco, eccsq, em, argpm, inclm, mm, nm, nodem, irez, atime, d2201, d2211, d3210, d3222, d4410, d4422, d5220, d5232, d5421, d5433, dedt, didt, dmdt, dnodt, domdt, del1, del2, del3, xfact, xlamo, xli, xni) {
         'use strict';
@@ -395,10 +399,12 @@ var SGP4 = {
         var xke = whichconst.xke;
         
         irez = 0;
-        if (0.0034906585 < nm < 0.0052359877)
+        if (0.0034906585 < nm < 0.0052359877) {
             irez = 1;
-        if (8.26e-3 <= nm <= 9.24e-3 && em >= 0.5)
+        }
+        if (8.26e-3 <= nm <= 9.24e-3 && em >= 0.5) {
             irez = 2;
+        }
             
         var ses  =  ss1 * zns * ss5;
         var sis  =  ss2 * zns * (sz11 + sz13);
@@ -409,7 +415,7 @@ var SGP4 = {
         if (inclm < 5.2359877e-2 || inclm > Math.PI - 5.2359877e-2) {
             shs = 0.0;
         }
-        if (sinim != 0.0) {
+        if (sinim !== 0.0) {
             shs = shs / sinim;
         }
         var sgs  = sghs - cosim * shs;
@@ -420,12 +426,13 @@ var SGP4 = {
         var sghl = s4 * znl * (z31 + z33 - 6.0);
         var shll = -znl * s2 * (z21 + z23);
         // sgp4fix for 180 deg incl
-        if (inclm < 5.2359877e-2 || inclm > Math.PI - 5.2359877e-2)
+        if (inclm < 5.2359877e-2 || inclm > Math.PI - 5.2359877e-2) {
             shll = 0.0;
+        }
         domdt = sgs + sghl;
         dnodt = shs;
         
-        if (sinim != 0.0) {
+        if (sinim !== 0.0) {
             domdt = domdt - cosim / sinim * shll;
             dnodt = dnodt + shll / sinim;
         }
@@ -438,9 +445,9 @@ var SGP4 = {
         nodem  = nodem + dnodt * t;
         mm     = mm + dmdt * t;
         
-        if (irez != 0) {
+        if (irez !== 0) {
             aonv = Math.pow(nm / xke, x2o3);
-            if (irez == 2) {
+            if (irez === 2) {
                 cosisq = cosim * cosim;
                 var emo    = em;
                 em     = ecco;
@@ -516,7 +523,7 @@ var SGP4 = {
                 em    = emo;
                 emsq  = emsqo;
             }
-            if (irez == 1) {
+            if (irez === 1) {
                 g200  = 1.0 + emsq * (-2.5 + 0.8125 * emsq);
                 g310  = 1.0 + 2.0 * emsq;
                 g300  = 1.0 + emsq * (-6.0 + 6.60937 * emsq);
@@ -599,9 +606,9 @@ var SGP4 = {
         
         ft    = 0.0;
         
-        if (irez != 0) {
+        if (irez !== 0) {
             // sgp4fix streamline check
-            if (atime == 0.0 || t * atime <= 0.0 || Math.abs(t) < Math.abs(atime)) {
+            if (atime === 0.0 || t * atime <= 0.0 || Math.abs(t) < Math.abs(atime)) {
                 atime  = 0.0;
                 xni    = no;
                 xli    = xlamo;
@@ -616,10 +623,10 @@ var SGP4 = {
     
             var iretn = 381; // added for do loop
             var iret  =   0; // added for loop
-            while (iretn == 381) {
+            while (iretn === 381) {
                 //  ------------------- dot terms calculated -------------
                 //  ----------- near - synchronous resonance terms -------
-                if (irez != 2) {
+                if (irez !== 2) {
                     xndt  = del1 * Math.sin(xli - fasx2) + del2 * Math.sin(2.0 * (xli - fasx4)) + del3 * Math.sin(3.0 * (xli - fasx6));
                     xldot = xni + xfact;
                     xnddt = del1 * Math.cos(xli - fasx2) + 2.0 * del2 * Math.cos(2.0 * (xli - fasx4)) + 3.0 * del3 * Math.cos(3.0 * (xli - fasx6));
@@ -644,7 +651,7 @@ var SGP4 = {
                     iretn = 0;
                 }
     
-                if (iretn == 381) {
+                if (iretn === 381) {
                     xli   = xli + xldot * delt + xndt * step2;
                     xni   = xni + xndt * delt + xnddt * step2;
                     atime = atime + delt;
@@ -652,7 +659,7 @@ var SGP4 = {
             }
             nm = xni + xndt * ft + xnddt * ft * ft * 0.5;
             xl = xli + xldot * ft + xndt * ft * ft * 0.5;
-            if (irez != 1) {
+            if (irez !== 1) {
                 mm   = xl - 2.0 * nodem + 2.0 * theta;
                 dndt = nm - no;
             } else {
@@ -715,7 +722,7 @@ var SGP4 = {
         var rp    = ao * (1.0 - ecco);
         method = 'n';
         
-        if (opsmode == 'a') {
+        if (opsmode === 'a') {
             //  sgp4fix use old way of finding gst
             //  count integer number of days from 0 jan 1970
             var ts70  = epoch - 7305.0;
@@ -727,8 +734,9 @@ var SGP4 = {
             var fk5r  = 5.07551419432269442e-15;
             var c1p2p = c1 + SGP4.twopi;
             gsto  = (thgr70 + c1*ds70 + c1p2p*tfrac + ts70*ts70*fk5r) % SGP4.twopi;
-            if (gsto < 0.0)
+            if (gsto < 0.0) {
                 gsto = gsto + SGP4.twopi;
+            }
         } else {
             gsto = SGP4.gstime(epoch + 2433281.5);
         }
@@ -837,8 +845,9 @@ var SGP4 = {
         
         if (omeosq >= 0.0 || satrec.no >= 0.0) {
             satrec.isimp = 0;
-            if (rp < 220.0 / radiusearthkm + 1.0)
+            if (rp < 220.0 / radiusearthkm + 1.0) {
                 satrec.isimp = 1;
+            }
             sfour  = ss;
             qzms24 = qzms2t;
             perige = (rp - 1.0) * radiusearthkm;
@@ -846,8 +855,9 @@ var SGP4 = {
             //for perigees below 156 km, s and qoms2t are altered -
             if (perige < 156.0) {
                 sfour = perige - 78.0;
-                if (perige < 98.0)
+                if (perige < 98.0) {
                     sfour = 20.0;
+                }
                 //  sgp4fix use multiply for speed instead of pow
                 var qzms24temp =  (120.0 - sfour) / radiusearthkm;
                 qzms24 = qzms24temp * qzms24temp * qzms24temp * qzms24temp;
@@ -866,8 +876,9 @@ var SGP4 = {
             cc2   = coef1 * satrec.no * (ao * (1.0 + 1.5 * etasq + eeta * (4.0 + etasq)) + 0.375 * j2 * tsi / psisq * satrec.con41 * (8.0 + 3.0 * etasq * (8.0 + etasq)));
             satrec.cc1   = satrec.bstar * cc2;
             cc3   = 0.0;
-            if (satrec.ecco > 1.0e-4)
+            if (satrec.ecco > 1.0e-4) {
                 cc3 = -2.0 * coef * tsi * j3oj2 * satrec.no * sinio / satrec.ecco;
+            }
             satrec.x1mth2 = 1.0 - cosio2;
             satrec.cc4 = 2.0 * satrec.no * coef1 * ao * omeosq * (satrec.eta * (2.0 + 0.5 * etasq) + satrec.ecco * (0.5 + 2.0 * etasq) - j2 * tsi / (ao * psisq) * (-3.0 * satrec.con41 * (1.0 - 2.0 * eeta + etasq * (1.5 - 0.5 * eeta)) + 0.75 * satrec.x1mth2 * (2.0 * etasq - eeta * (1.0 + etasq)) * Math.cos(2.0 * satrec.argpo)));
             satrec.cc5 = 2.0 * coef1 * ao * omeosq * (1.0 + 2.75 * (etasq + eeta) + eeta * etasq);
@@ -882,8 +893,9 @@ var SGP4 = {
             xpidot =  satrec.argpdot+ satrec.nodedot;
             satrec.omgcof = satrec.bstar * cc3 * Math.cos(satrec.argpo);
             satrec.xmcof = 0.0;
-            if (satrec.ecco > 1.0e-4)
+            if (satrec.ecco > 1.0e-4) {
                 satrec.xmcof = -x2o3 * coef * satrec.bstar / eeta;
+            }
             satrec.nodecf = 3.5 * omeosq * xhdot1 * satrec.cc1;
             satrec.t2cof   = 1.5 * satrec.cc1;
             //  sgp4fix for divide by zero with xinco = 180 deg
@@ -1003,7 +1015,7 @@ var SGP4 = {
                 argpm  = 0.0;
                 nodem  = 0.0;
                 mm     = 0.0;
-                dndt;
+                var dndt;
                 
                 var dsinitResults = SGP4.dsinit(whichconst, cosim, emsq, satrec.argpo, s1, s2, s3, s4, s5, sinim, ss1, ss2, ss3, ss4, ss5, sz1, sz3, sz11, sz13, sz21, sz23, sz31, sz33, satrec.t, tc, satrec.gsto, satrec.mo, satrec.mdot, satrec.no, satrec.nodeo, satrec.nodedot, xpidot, z1, z3, z11, z13, z21, z23, z31, z33, satrec.ecco, eccsq, em, argpm, inclm, mm, nm, nodem, satrec.irez, satrec.atime, satrec.d2201, satrec.d2211, satrec.d3210, satrec.d3222 , satrec.d4410, satrec.d4422, satrec.d5220, satrec.d5232, satrec.d5421, satrec.d5433, satrec.dedt, satrec.didt, satrec.dmdt, satrec.dnodt, satrec.domdt, satrec.del1, satrec.del2, satrec.del3, satrec.xfact, satrec.xlamo, satrec.xli, satrec.xni);
                 
@@ -1042,7 +1054,7 @@ var SGP4 = {
             }
     
             // ----------- set variables if not deep space -----------
-            if (satrec.isimp != 1) {
+            if (satrec.isimp !== 1) {
                 cc1sq = satrec.cc1 * satrec.cc1;
                 satrec.d2 = 4.0 * ao * tsi * cc1sq;
                 temp = satrec.d2 * tsi * satrec.cc1 / 3.0;
@@ -1067,9 +1079,10 @@ var SGP4 = {
         whichconst = typeof whichconst !== 'undefined' ? whichconst : SGP4.getgravconst('wgs84');
         
         var mrt = 0.0;
-        if (whichconst == null)
+        if (whichconst === null) {
             whichconst = satrec.whichconst;
-            
+        }
+
         var temp4 =   1.5e-12;
         var twopi = 2.0 * Math.PI;
         var x2o3  = 2.0 / 3.0;
@@ -1100,7 +1113,7 @@ var SGP4 = {
         tempe   = satrec.bstar * satrec.cc4 * satrec.t;
         templ   = satrec.t2cof * t2;
         
-        if (satrec.isimp != 1) {
+        if (satrec.isimp !== 1) {
             delomg = satrec.omgcof * satrec.t;
             //sgp4fix use mutliply for speed instead of pow
             var delmtemp =  1.0 + satrec.eta * Math.cos(xmdf);
@@ -1119,7 +1132,7 @@ var SGP4 = {
         var em    = satrec.ecco;
         inclm = satrec.inclo;
         
-        if (satrec.method == 'd') {
+        if (satrec.method === 'd') {
             tc = satrec.t;
             
             var dspaceResults = SGP4.dspace(satrec.irez, satrec.d2201, satrec.d2211, satrec.d3210, satrec.d3222, satrec.d4410, satrec.d4422, satrec.d5220, satrec.d5232, satrec.d5421, satrec.d5433, satrec.dedt, satrec.del1, satrec.del2, satrec.del3, satrec.didt, satrec.dmdt, satrec.dnodt, satrec.domdt, satrec.argpo, satrec.argpdot, satrec.t, tc, satrec.gsto, satrec.xfact, satrec.xlamo, satrec.no, satrec.atime, em, argpm, inclm, satrec.xli, mm, satrec.xni, nodem, nm);
@@ -1154,8 +1167,9 @@ var SGP4 = {
         }
         
         // sgp4fix fix tolerance to avoid a divide by zero
-        if (em < 1.0e-6)
+        if (em < 1.0e-6) {
             em  = 1.0e-6;
+        }
         mm     = mm + satrec.no * templ;
         xlm    = mm + argpm + nodem;
         emsq   = em * em;
@@ -1176,7 +1190,7 @@ var SGP4 = {
         mp     = mm;
         sinip  = sinim;
         cosip  = cosim;
-        if (satrec.method == 'd') {
+        if (satrec.method === 'd') {
             var dpperResults = SGP4.dpper(satrec, satrec.inclo, 'n', ep, xincp, nodep, argpp, mp, satrec.operationmode);
             
             ep      = dpperResults.ep;
@@ -1225,8 +1239,9 @@ var SGP4 = {
             coseo1 = Math.cos(eo1);
             tem5   = 1.0 - coseo1 * axnl - sineo1 * aynl;
             tem5   = (u - aynl * coseo1 + axnl * sineo1 - eo1) / tem5;
-            if (Math.abs(tem5) >= 0.95)
+            if (Math.abs(tem5) >= 0.95) {
                 tem5 = (tem5 > 0.0 ? 0.95 : -0.95);
+            }
             eo1    = eo1 + tem5;
             ktr = ktr + 1;
         }
