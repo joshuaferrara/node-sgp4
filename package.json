@@ -1,10 +1,10 @@
 {
   "name": "sgp4",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A NodeJS port of python-sgp4 used for predicting and calculating orbital information of satellites from TLE data.",
   "main": "sgp4.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node node_modules/mocha/bin/mocha"
   },
   "repository": {
     "type": "git",
@@ -29,5 +29,8 @@
   "bugs": {
     "url": "https://github.com/joshuaferrara/node-sgp4/issues"
   },
-  "homepage": "https://github.com/joshuaferrara/node-sgp4"
+  "homepage": "https://github.com/joshuaferrara/node-sgp4",
+  "dependencies": {
+    "mocha": "^2.2.5"
+  }
 }
