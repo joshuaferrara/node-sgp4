@@ -10,7 +10,7 @@ var issSatRec = SGP4.twoline2rv(issLine1, issLine2, SGP4.wgs84());
 // This will print some info every 3/4th second
 function printPosition() {
     // Current time
-    var now = new Date(2015, 0, 1);
+    var now = new Date();
     
     // This will contain ECI (http://en.wikipedia.org/wiki/Earth-centered_inertial) coordinates of position and velocity of the satellite
     var positionAndVelocity = SGP4.propogate(issSatRec, now.getUTCFullYear(), now.getUTCMonth() + 1, now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
