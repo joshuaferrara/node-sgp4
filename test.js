@@ -5,6 +5,8 @@ var issLine1 = "1 25544U 98067A   15073.52509288  .00016392  00000-0  24500-3 0 
 var issLine2 = "2 25544  51.6454 196.8789 0008842 100.5316 358.5831 15.55127532933300";
 
 var firstOfYear = new Date(2015, 0, 1);
+firstOfYear.setUTCHours(8); // Pacific Standard Time
+console.log(firstOfYear.toString());
 
 describe("SGP4", function() {
 	describe(".twoline2rv(line1, line2, gravconst)", function() {
