@@ -103,7 +103,7 @@ var SGP4 = {
                 var cosop = Math.cos(nodep);
                 var alfdp = sinip * sinop;
                 var betdp = sinip * cosop;
-                var dalf = ph * cosop + pinc * cosip * sinip;
+                var dalf = ph * cosop + pinc * cosip * sinop;
                 var dbet = -ph * sinop + pinc * cosip * cosop;
                 alfdp = alfdp + dalf;
                 betdp = betdp + dbet;
@@ -727,7 +727,7 @@ var SGP4 = {
             //  sgp4fix use old way of finding gst
             //  count integer number of days from 0 jan 1970
             var ts70  = epoch - 7305.0;
-            var ds70 = (ts70 + 1.0e-8); // 1.0;
+            var ds70 = Math.floor(ts70 + 1.0e-8); // 1.0;
             var tfrac = ts70 - ds70;
             //  find greenwich location at epoch
             var c1    = 1.72027916940703639e-2;
@@ -1405,7 +1405,7 @@ var SGP4 = {
         satrec.epochdays = parseFloat(line1.substring(20, 32));
         satrec.ndot = parseFloat(line1.substring(33, 43));
         satrec.nddot = parseFloat("." + parseInt(line1.substring(44, 50), 10) + "E" + line1.substring(50, 52));
-        satrec.bstar = parseFloat(line1.substring(53, 53) + '.' + line1.substring(54, 59)); //parseFloat("." + parseInt(line1.substring(53, 59), 10) + "E" + line1.substring(59, 61));
+        satrec.bstar = parseFloat(line1.substring(53, 54) + '.' + line1.substring(54, 59)); //parseFloat("." + parseInt(line1.substring(53, 59), 10) + "E" + line1.substring(59, 61));
         var ibexp = parseInt(line1.substring(59, 61), 10);
         satrec.bstar = satrec.bstar * Math.pow(10, ibexp);
         
