@@ -1,6 +1,6 @@
 var SGP4 = {
     deg2rad: Math.PI / 180.0,
-    rad2deg: 57.2957795,
+    rad2deg: 180.0 / Math.PI,
     twopi: 2.0 * Math.PI,
     fmod: function (x, y) {
       return x - Math.floor(x/y) * y;
