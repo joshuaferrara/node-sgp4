@@ -8,6 +8,11 @@ If you need any support, click the badge below. *Support is not guaranteed and I
 [![Join the chat at https://gitter.im/joshuaferrara/node-sgp4](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/joshuaferrara/node-sgp4?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [![NPM](https://nodei.co/npm/sgp4.png?downloads=true&stars=true)](https://nodei.co/npm/sgp4/)
+
+### Other Languages
+
+This package can also be found for GoLang at https://github.com/joshuaferrara/go-satellite
+
 ### Installation
 `npm install sgp4`
 ### Example | [Google Maps Demo](http://tracking.ferrara.space/)
