@@ -1451,12 +1451,12 @@ var SGP4 = {
         return satrec;
     },
     days2mdhms: function(year, days) {
-        var lmonth = (31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+        var lmonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     
         var dayofyr = Math.floor(days);
         //  ----------------- find month and day of month ----------------
         if (year % 4 == 0)
-            lmonth = (31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+            lmonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     
         var i = 1;
         var inttemp = 0;
