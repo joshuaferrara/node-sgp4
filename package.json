@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/joshuaferrara/node-sgp4",
   "devDependencies": {
-    "mocha": "^2.2.5",
+    "mocha": "5.2.0",
     "expect.js": "*"
   }
 }
